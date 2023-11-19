@@ -70,6 +70,15 @@ UDPはTCPと異なり、送受信の前に接続を確立する必要がない�
 
 UDPパケットはヘッダーにサイズの情報を持っており、1回のsend()に対して1回のrecieve()で受け取れるようになっている。
 ## HTTP
+| バージョン | トランスポート層 | 公開年 |
+| ---- | ---- | ---- | 
+| HTTP/1.1 | TCP | 1997年 |
+| HTTP/2 | TCP | 2015年 |
+| HTTP/3 | UDP | 2022年 |
+
+ヘッダーの内容など詳細は次サイト参照。https://www.infraexpert.com/study/tcpip16.html
+
+
 
 ## 参考資料
 [1] Kenneth L. Calvert,Michael J. Donahoo,小高 知宏「TCP/IPソケットプログラミング Java編」<br>
