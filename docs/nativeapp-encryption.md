@@ -6,18 +6,15 @@
 HTTPはステートレス（各リクエスト間で認証状態等を引き継がない）ため、
 Authorization Bearerヘッダに認証トークンを毎回保持させます。
 
-X
-
-
 ### 認証アーキテクチャ
-認証サーバー・DB
+#### 認証サーバー・DB
 1. ログインAPIが叩かれたとき認証トークンをランダムに生成する（推測されないため）。
 2. 認証トークンをDBに保存。
 3. 暗号化された通信によるAPIリクエストに対して、認証トークンがDBにあり有効期限が切れていないことチェック。
 4. 有効期限が切れていた場合は認証トークンをDBから削除
 5. サービスによっては有効期限の延長を行う。
 
-クライアント（今回の場合モバイルアプリ）
+#### クライアント（今回の場合モバイルアプリ）
 1. ログイン成功時に認証トークンを受け取る。
 2. メモリに持つまたは、機密情報であるため安全にローカルストレージに保管する。
    （メモリに持つ場合、アプリをキルするとトークンを失う。）
@@ -45,6 +42,7 @@ iOSにはKeyChainというパスワード等機密情報を保存するための
 ```
 ・UserDefaults
 /data/Containers/Data/Application/APP_ID/Library/Preferences/
+
 ・KeyChain
 /private/var/Keychains/keychain.db
 ```
@@ -56,15 +54,20 @@ iOSにはKeyChainというパスワード等機密情報を保存するための
 暗号化方法は設定できない。（共通鍵、公開鍵のハイブリット式らしい）
 
 #### android
-androidにはKeyStoreという暗号鍵、複合鍵情報を格納するシステムがある。
+androidにはKeyStoreという共通鍵、キーペア（暗号鍵、複合鍵情報）を格納するシステムがある。
 
-暗号化のアルゴリズムとしては主にRSA(対称暗号),AES（非対称暗号）が使用される。
-android端末上でストレージに
+iOSと異なり、KeyStoreはあくまで鍵を安全に保存する機能であり、
+KeyStoreの鍵で暗号化したデータは通常時と同様SharedPreferencesに保存される。
+そのためアプリを削除するとデータも消える。
+```
+・SharedPreferences
+/data/data/YOUR_PACKAGE_NAME/shared_prefs/~.xml
+```
+暗号化のアルゴリズムとしてRSA(共通鍵暗号),AES（公開鍵暗号）など指定ができる。
 
-##　参考資料
+疑問：android端末上の同じ方法で保存している鍵で暗号化と複合化を行うのに、公開鍵暗号を使う必要があるのか謎
+
+## 参考資料
 https://coky-t.gitbook.io/owasp-mastg-ja/mobairuapuritesutogaido/0x04e-testing-authentication-and-session-management
 
 https://qiita.com/sachiko-kame/items/261d42c57207e4b7002a
-
-
-
