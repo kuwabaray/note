@@ -38,7 +38,33 @@ X
 ・重要度がアクセストークンよりも高いが、APIリクエストに使用する頻度が低いためリスクも低い。
 ```
 
+### トークンのローカルでの保管方法
+#### iOS
+iOSにはKeyChainというパスワード等機密情報を保存するための機能がある。
+一般的にローカルストレージとして使われるUserDefaultsと保存場所が異なる。
+```
+・UserDefaults
+/data/Containers/Data/Application/APP_ID/Library/Preferences/
+・KeyChain
+/private/var/Keychains/keychain.db
+```
+そのため以下の違いが生まれる。
+- KeyChainに保存したデータはアプリ削除後も消えない。UserDefaultsは消える。
+- KeyChainは設定によっては他アプリとデータが共有できる。UserDefaultsはできない。
 
+また、UserDefaultsでは暗号化せず保存できるが、KeyChainでは暗号化して保存される。
+暗号化方法は設定できない。（共通鍵、公開鍵のハイブリット式らしい）
+
+#### android
+androidにはKeyStoreという暗号鍵、複合鍵情報を格納するシステムがある。
+
+暗号化のアルゴリズムとしては主にRSA(対称暗号),AES（非対称暗号）が使用される。
+android端末上でストレージに
+
+##　参考資料
+https://coky-t.gitbook.io/owasp-mastg-ja/mobairuapuritesutogaido/0x04e-testing-authentication-and-session-management
+
+https://qiita.com/sachiko-kame/items/261d42c57207e4b7002a
 
 
 
