@@ -65,9 +65,21 @@ KeyStoreの鍵で暗号化したデータは通常時と同様SharedPreferences�
 ```
 暗号化のアルゴリズムとしてRSA(共通鍵暗号),AES（公開鍵暗号）など指定ができる。
 
+デバイスによるユーザー認証がされている時のみ鍵を使用するようにもできる。
+
+1. 画面ロックが設定されていることを必須とする。<br>
+KeyguardManager.isDeviceSecure()で画面ロックが設定されているか確認し、
+設定されているときのみ暗号化/複合化するようにプログラムする。
+
+2. 生体認証を必須とする。<br>
+鍵生成時にオプションでsetUserAuthenticationRequired(true)とすると、
+その鍵を使用してデータを暗号化/複合化しようとしたとき生体認証を求められる。
+
 疑問：android端末上の同じ方法で保存している鍵で暗号化と複合化を行うのに、公開鍵暗号を使う必要があるのか謎
 
 ## 参考資料
 https://coky-t.gitbook.io/owasp-mastg-ja/mobairuapuritesutogaido/0x04e-testing-authentication-and-session-management
 
 https://qiita.com/sachiko-kame/items/261d42c57207e4b7002a
+
+https://medium.com/androiddevelopers/using-biometricprompt-with-cryptoobject-how-and-why-aace500ccdb7
