@@ -66,15 +66,54 @@ KeyStoreの鍵で暗号化したデータは通常時と同様SharedPreferences�
 ```
 
 
-デバイスによるユーザー認証がされている時のみ鍵を使用するようにもできる。
+デバイスによるユーザー認証（PIN、生体認証など）がされた時のみ鍵を使用できるように設定することも可能。
 
-1. **画面ロックが設定されていることを必須とする。**<br>
-KeyguardManager.isDeviceSecure()で画面ロックが設定されているか確認し、
-設定されているときのみ暗号化/複合化するようにプログラムする。
+- 鍵の生成
+```
+KeyGenParameterSpec.Builder keyGenParamsBuilder = new KeyGenParameterSpec.Builder(keyName,
+   // 暗号化と複合化にだけ使用できる。署名や検証などには使用できないようにして安全性を高めている。
+   KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+   // 暗号化アルゴリズムの設定
+   .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+   .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+   // この鍵を使用する際にデバイスでのユーザー認証がされていることを必須とする。
+   // ユーザー認証せず使用した場合はUserNotAuthenticatedExceptionが投げられる。
+   .setUserAuthenticationRequired(true)
+   // [1つ目の引数]秒以内に認証されていれば再認証をスキップできる。デフォルトは0で毎回認証が必要になる。
+   // [2つ目の引数」で認証方法を設定する。下記の場合、生体認証とロック画面認証。
+   .setUserAuthenticationParameters(0,
+            KeyProperties.AUTH_BIOMETRIC_STRONG |
+            KeyProperties.AUTH_DEVICE_CREDENTIAL);
+```
 
-2. **生体認証を必須とする。**<br>
-鍵生成時にオプションでsetUserAuthenticationRequired(true)とすると、
-その鍵を使用してデータを暗号化/複合化しようとしたとき生体認証を求められる。
+- 認証ポップアップの表示<br>
+  認証が必要な場合は認証ポップアップを呼び出すようプログラムする。
+```
+    biometricLoginButton.setOnClickListener(view -> {
+            biometricPrompt.authenticate(promptInfo);
+    });
+```
+
+- 認証が必要かどうかの判断<br>
+例)
+[cordova-plugin-secure-storage-echo](https://github.com/mibrito707/cordova-plugin-secure-storage-echo/tree/master)
+では下記のように鍵を使用してエラーが起こるかで判断している。
+  
+```
+boolean userAuthenticationRequired(String alias) {
+        try {
+            // Do a quick encrypt/decrypt test
+            byte[] encrypted = encrypt(alias.getBytes(), alias);
+            decrypt(encrypted, alias);
+            return false;
+        } catch (InvalidKeyException noAuthEx) {
+            return true;
+        } catch (Exception e) {
+            // Other
+            return false;
+        }
+    }
+```
 
 疑問：android端末上の同じ方法で保存している鍵で暗号化と複合化を行うのに、公開鍵暗号を使う必要があるのか謎
 
