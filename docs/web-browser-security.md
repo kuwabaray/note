@@ -34,7 +34,7 @@ Secureの付与されたCookieはHTTP通信ではセットされず、HTTPS通�
 Set-Cookie: sessionId=38afes7a8; Secure
 ```
 
-### 2. HttpOnly （XSS対策）<br>
+### 2. HttpOnly （XSS脆弱性）<br>
 
 HttpOnlyを設定することで、javascriptからDocument.cookieなどを使用してCookieを読み取ることができなくなる。
 Cookieの読み取りは認証サーバー側で行えばいいのでjavascriptを使用する必要はない。
@@ -49,7 +49,7 @@ Set-Cookie: sessionId=38afes7a8; HttpOnly
 ```
 のようなメモを表示したとき、javascriptのコードsomething()が実行されてしまう。
 
-### 3. SameSite （CSRF対策）<br>
+### 3. SameSite （CSRF脆弱性）<br>
 #### CSRF脆弱性
 Cookieは同じ宛先へのリクエストには自動で付与される。
 そのため以下のようなCSRF攻撃を受けることある。
