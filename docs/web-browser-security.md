@@ -83,3 +83,6 @@ Set-Cookie: sessionId=38afes7a8; Domain:example.com
 ### 6. Path
 
 PathはCookieが利用されるホストのパスを制限する。Cookieが奪われる状況についてPathの制限によってセキュリティが改善することはないので指定不要。
+
+## 参考資料
+[1]. 米内貴志 「Webブラウザセキュリティ Webアプリケーションの安全性を支える仕組みを整理する」
