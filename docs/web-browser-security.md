@@ -21,10 +21,33 @@ SSL/TLSでは共通鍵・暗号鍵のハイブリット方式で暗号化され�
 
 ## Cookie
 Cookieは「key=value」のデータ型をしている。<br>
-HTTPはステートレスなので、リクエスト間で認証情報やトラッキング情報を文字するために使われる。
+HTTPはステートレスなので、リクエスト間で認証情報やトラッキング情報を保持するために使われる。
 ```
 Set-Cookie: sessionId=38afes7a8; Expired=2023/01/01 00:00:00
 ```
 
-ホスト名
+### Cookieを保護するためのオプション
+1. Secure<br>
+Secureの付与されたCookieはHTTP通信ではセットされず、HTTPS通信でのみセットされる。
+```
+Set-Cookie: sessionId=38afes7a8; Secure
+```
+
+2. HttpOnly<br>
+HttpOnlyを設定することで、javascriptからDocument.cookieなどを使用してCookieを読み取ることができなくなる。
+Cookieの読み取りは認証サーバー側で行えばいいのでjavascriptを使用する必要はない。
+これによってXSS脆弱性の対策となる。
+```
+Set-Cookie: sessionId=38afes7a8; HttpOnly
+```
+
+3. SameSite<br>
+例えば、他人のCookieを利用して罠ページから購入完了ページに遷移されるリクエストを送った場合、正規のページ遷移をしていない
+にも関わらず購入完了してしまう。これをCSRF攻撃という。
+SameSiteを設定することで、遷移元と遷移先のサイトが一致する場合にのみCookieがセットされるようになる。
+```
+Set-Cookie: sessionId=38afes7a8; SameSite=Strict
+```
+
+
 
