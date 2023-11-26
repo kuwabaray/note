@@ -28,12 +28,14 @@ Set-Cookie: sessionId=38afes7a8; Expired=2023/01/01 00:00:00
 
 ### Cookieを保護するためのオプション
 1. Secure<br>
+
 Secureの付与されたCookieはHTTP通信ではセットされず、HTTPS通信でのみセットされる。
 ```
 Set-Cookie: sessionId=38afes7a8; Secure
 ```
 
 2. HttpOnly<br>
+
 HttpOnlyを設定することで、javascriptからDocument.cookieなどを使用してCookieを読み取ることができなくなる。
 Cookieの読み取りは認証サーバー側で行えばいいのでjavascriptを使用する必要はない。
 これによってXSS脆弱性の対策となる。
@@ -42,12 +44,17 @@ Set-Cookie: sessionId=38afes7a8; HttpOnly
 ```
 
 3. SameSite<br>
-例えば、他人のCookieを利用して罠ページから購入完了ページに遷移されるリクエストを送った場合、正規のページ遷移をしていない
-にも関わらず購入完了してしまう。これをCSRF攻撃という。
-SameSiteを設定することで、遷移元と遷移先のサイトが一致する場合にのみCookieがセットされるようになる。
+
+Cookieは同じ宛先へのリクエストには自動で付与される。
+そのため以下のようなCSRF攻撃を受けることある。
+```
+銀行ページ(http://xxx.xxx)にログインしていたとする。
+罠ページ(http://yyy.yyy)へのURLが書かれたメールが届く。
+罠ページへアクセスしたところ振込リクエスト(http://xxx.xxx/buy)が自動送信されてしまう。
+別サイトからのリクエストだが宛先が同じなので振込リクエストにCookieが付与され、セッションIDが有効であるため処理が完了してしまう。
+```
+これはSameSiteを設定することが大きな対策となる。SameSiteはクライアントからサーバーへのリクエストについて制限するプロパティである。
+SameSiteをStrictで設定すると、リクエスト元とリクエスト先のスキーム+ホスト名(http:// + xxx.xxx)が一致する場合にのみCookieがセットされるようになる。
 ```
 Set-Cookie: sessionId=38afes7a8; SameSite=Strict
 ```
-
-
-
