@@ -55,6 +55,24 @@ Cookieは同じ宛先へのリクエストには自動で付与される。
 ```
 これはSameSiteを設定することが大きな対策となる。SameSiteはクライアントからサーバーへのリクエストについて制限するプロパティである。
 SameSiteをStrictで設定すると、リクエスト元とリクエスト先のスキーム+ホスト名(http:// + xxx.xxx)が一致する場合にのみCookieがセットされるようになる。
+デメリットとして、悪意なく別サイトのリンクから銀行ページに戻るとセッションが切れてしまう。
 ```
 Set-Cookie: sessionId=38afes7a8; SameSite=Strict
 ```
+
+4. Expires, Max-Age
+
+ExpiredはCookieの有効期限を日付で指定し、Max-Ageは秒数で指定する。両方とも指定された場合はMax-Ageが優先される。
+```
+Set-Cookie: sessionId=38afes7a8; Expires: Wed, 21 Oct 2015 07:28:00 GMT; Max-Age: 3600
+```
+
+5. Domain
+DomainはCookieが利用されるホストを制限する。しかしサブドメインまでCookieの使用を許容してしまう。
+指定しない場合サブドメインには使用されないため指定しない方がセキュリティ面で良い。
+>メインサイトとは別のコンテンツを作るときに、本体ドメインを元に任意で設定するドメイン名のことです。 「○○○.com」（独自ドメイン）を本体ドメインとしたとき、「△△△. ○○○.com」のように本体ドメインの先頭に文字列を挿入しているドメインがサブドメインになります。 (https://shop-pro.jp/yomyom-colorme/72260)
+```
+Set-Cookie: sessionId=38afes7a8; Domain:example.com
+```
+6. Path
+PathはCookieが利用されるホストのパスを制限する。Cookieが奪われる状況についてPathの制限によってセキュリティが改善することはないので指定不要。
