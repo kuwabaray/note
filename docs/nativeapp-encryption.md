@@ -126,14 +126,13 @@ boolean userAuthenticationRequired(String alias) {
         }
     }
 ```
+setUserAuthenticationRequiredなど一部オプションは共通鍵、秘密鍵にのみ適用され、公開鍵には適用されないため、
+暗号化のみ制限を緩くしたい場合はRSAを使うのもあり。
 
 ### 用語
 通常、公開鍵を使って暗号化し秘密鍵を使って複合化するが、署名と検証はその逆。
 - 署名 ... 秘密鍵を使った暗号化
 - 検証 ... 公開鍵を使った複合化
-
-### 疑問
-- android端末上の同じ方法で保存している鍵で暗号化と複合化を行うのに、公開鍵暗号を使う必要があるのか謎
 
 ## 参考資料
 https://developer.android.com/training/articles/keystore?hl=ja#UserAuthentication
