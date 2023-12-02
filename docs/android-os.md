@@ -13,9 +13,23 @@ AndroidはLinuxベースのOSであり、各アプリをLinuxのユーザーと�
    root権限が必要なこの処理はroot権限を持つinstalldが行う。
    - root権限を持つプロセスの作業を切り出して少なくすることでセキュリティを高くしている。
    
-3. **package.xmlにuidとパッケージ名 (com.company.sample-app)、apkファイルが置かれている箇所などを書き込む**
+3. **/data/system/package.xmlにuidなどを書き込む**
+
+   以下の項目が全てのアプリについて記載されている。
+   - アプリ名 (com.company.sample-app)
+   - apkファイルのパス
+   - ネイティブライブラリのパス
+   - uid
+   - certのキー
+   - AndroidManifest.xmlに記載された使用するパーミッション
+     
 4. **アプリをタップされたら、package.xmlに記載されているuidでプロセスを立ち上げる。**
-5. **アプリの使用に伴い、/data/data/com.company.sample-app/下にディレクトリが生成される。**
+5. 
+   - アプリごとにプロセスが分かれていることで、他のアプリがクラッシュしても自アプリはクラッシュしない。
+   - （root権限がなければ）他プロセスの情報にアクセスできないので安全。
+     
+6. **アプリの使用に伴い、/data/data/com.company.sample-app/下にディレクトリが生成される。**
+   
    - cache, shared_prefs, databaseは権限771なので他アプリから読み取り等されない。
    
 
