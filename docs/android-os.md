@@ -1,5 +1,4 @@
 # Android OSの仕組み
-## 
 AndroidはLinuxベースのOSであり、各アプリをLinuxのユーザーと見立てて機能している。
 1. **空いているuidをインストールするアプリに振る。**
 
@@ -16,20 +15,23 @@ AndroidはLinuxベースのOSであり、各アプリをLinuxのユーザーと�
 3. **/data/system/package.xmlにuidなどを書き込む**
 
    以下の項目が全てのアプリについて記載されている。
-   - アプリ名 (com.company.sample-app)
+   - アプリケーションID (com.company.sample-app)。build.gradleのapplicationIdで定義される。
    - apkファイルのパス
    - ネイティブライブラリのパス
    - uid
-   - certのキー
+   - アプリ署名鍵 (参考資料[2]参照)
    - AndroidManifest.xmlに記載された使用するパーミッション
      
 4. **アプリをタップされたら、package.xmlに記載されているuidでプロセスを立ち上げる。**
-5. 
+   
    - アプリごとにプロセスが分かれていることで、他のアプリがクラッシュしても自アプリはクラッシュしない。
    - （root権限がなければ）他プロセスの情報にアクセスできないので安全。
      
-6. **アプリの使用に伴い、/data/data/com.company.sample-app/下にディレクトリが生成される。**
+5. **アプリの使用に伴い、/data/data/com.company.sample-app/下にディレクトリが生成される。**
    
    - cache, shared_prefs, databaseは権限771なので他アプリから読み取り等されない。
-   
+  
+## 参考資料
+[1]. 有野 和馬 「Androidを支える技術 II 真のマルチタスクに挑んだモバイルOSの心臓部」 <br>
+[2]. https://developer.android.com/studio/publish/app-signing?hl=ja
 
