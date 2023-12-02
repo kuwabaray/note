@@ -110,7 +110,7 @@ Same Originのリソース間にネットワーク越しのリクエストや、
 - Access-Control-Allow-Originをワイルドカード (*) ではなく指定する
 
 ### CSP
-SOPはSame Originへの制限がないため、[XSS脆弱性]()を代表とするコンテンツインジェクションに弱い。<br>
+SOPはSame Originへの制限がないため、[XSS脆弱性](https://github.com/kuwabaray/note/blob/main/docs/web-browser-security.md#xss%E8%84%86%E5%BC%B1%E6%80%A7)を代表とするコンテンツインジェクションに弱い。<br>
 コンテンツインジェクションへの対策としてCSP (Contents Security Policy)がある。
 
 CSPというHTTPヘッダでホスト名を指定することで、そのHTTPリクエストでリソースを取得した後、Webブラウザがそのホスト下のリソースを読み込まないでくれる。
@@ -120,7 +120,7 @@ Content-Security-Policy: default-src 'self'; script-src https://example.com;
 ```
 default-srcが画像やスタイルシートなど全てのリソースの制限ができるディレティブである。上記例ではwebページのオリジンを指定している。
 img-srcなどのディレクティブはdefault-srcの子供のイメージ。
-script-srcは明示的に指定しているので、webページのオリジンではなくhttps://example.com下だけが許可される.
+script-srcは明示的に指定しているので、webページのオリジンではなく https://example.com 下だけが許可される。
 
 
 ## 参考資料
