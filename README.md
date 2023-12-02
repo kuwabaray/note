@@ -16,6 +16,8 @@
     * [4. Expires, Max-Age](docs/web-browser-security.md#4-expires-max-age)
     * [5. Domain](docs/web-browser-security.md#5-domain)
     * [6. Path](docs/web-browser-security.md#6-path)
+  - [CORS (Cross Origin Resource Sharing)](https://github.com/kuwabaray/note/blob/main/docs/web-browser-security.md#cspcontents-security-policy)
+  - [CSP　(Contents Security Policy)](https://github.com/kuwabaray/note/blob/main/docs/web-browser-security.md#cspcontents-security-policy)
 
 + [モバイルアプリにおける暗号化](docs/nativeapp-encryption.md)
   - [認証トークン](docs/nativeapp-encryption.md)
