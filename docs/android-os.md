@@ -1,4 +1,5 @@
 # Android OSの仕組み
+## アプリインストールから起動の裏側
 AndroidはLinuxベースのOSであり、各アプリをLinuxのユーザーと見立てて機能している。
 1. **空いているuidをインストールするアプリに振る。**
 
@@ -31,6 +32,15 @@ AndroidはLinuxベースのOSであり、各アプリをLinuxのユーザーと�
    
    - cache, shared_prefs, databaseは権限771なので他アプリから読み取り等されない。
   
+## メモリ管理
+デスクトップPCなどではメモリをディスクに退避させる（スワップ）が、Androidでは行わない。＊1 <br>
+AndroidではLow Memory Killer がバックグラウンドに行って時間の経つアプリをキルしてメモリを確保する。
+```
+＊１ AndroidにおけるディスクはmicroSDカードなどのフラッシュメモリであり、
+フラッシュメモリは処理が遅い、バッテリー消費が激しい、回数制限があるというデメリットがあるため、
+メディアの保存に向いているがメモリの退避には向かないためである。
+```
+
 ## 参考資料
 [1]. 有野 和馬 「Androidを支える技術 II 真のマルチタスクに挑んだモバイルOSの心臓部」 <br>
 [2]. https://developer.android.com/studio/publish/app-signing?hl=ja
