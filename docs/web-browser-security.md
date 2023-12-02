@@ -84,14 +84,13 @@ Set-Cookie: sessionId=38afes7a8; Domain:example.com
 
 PathはCookieが利用されるホストのパスを制限する。Cookieが奪われる状況についてPathの制限によってセキュリティが改善することはないので指定不要。
 
-## CORS
+## CORS (Cross Origin Resource Sharing)
 ```
 Same Origin
 - スキーム + ホスト名 + ポート が一致するリソース。 (例 https:// + example.com + :80)<br>
 - パスは関係ない
 - ポート番号も一致する必要があるためCookieのSameSiteよりも制限が厳しい。
 ```
-### CORS (Cross Origin Resource Sharing)
 
 Same Originのリソース間にネットワーク越しのリクエストや、ブラウザ内でのリソース間アクセスの制限はないが、
 オリジンが異なる (Cross Origin)のリソースではそれらが禁止されている。これをSOP (Same Origin Policy)という。
@@ -110,10 +109,12 @@ Same Originのリソース間にネットワーク越しのリクエストや、
 - Access-Control-Allow-Credentials: true とする。
 - Access-Control-Allow-Originをワイルドカード (*) ではなく指定する
 
-### CSP　(Contents Security Policy)
+## CSP　(Contents Security Policy)
+### 背景
 SOPはSame Originへの制限がないため、[XSS脆弱性](https://github.com/kuwabaray/note/blob/main/docs/web-browser-security.md#xss%E8%84%86%E5%BC%B1%E6%80%A7)を代表とするコンテンツインジェクションに弱い。<br>
 コンテンツインジェクションへの対策としてCSP (Contents Security Policy)がある。
 
+### CSPとは？
 CSPというHTTPヘッダでホスト名を指定することで、そのHTTPリクエストでリソースを取得した後、Webブラウザがそのホスト下のリソースを読み込まないでくれる。
 例えばscript-srcにオリジンを指定すれば、オリジン下以外のjavascriptを実行されない。
 ```
