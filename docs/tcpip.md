@@ -120,4 +120,6 @@ HTTPは原則各リクエスト&レスポンスごとに新しいTCP接続を張
 ## 参考資料
 [1] Kenneth L. Calvert,Michael J. Donahoo,小高 知宏「TCP/IPソケットプログラミング Java編」<br>
 [2] [Kubota Hideya「ヒヨコでもわかる TCP/IP 入門」](https://zenn.dev/kubo_programmer/books/fa1e01071e7aaa90672d)<br>
-[3] https://socket.io/docs/v3/how-it-works/
+[3] https://socket.io/docs/v3/how-it-works/<br>
+[4] [Microsoft 「Windows 8 と WebSocket プロトコル」](https://learn.microsoft.com/ja-jp/archive/msdn-magazine/2012/december/windows-8-networking-windows-8-and-the-websocket-protocol)<br>
+[5] https://triple-underscore.github.io/RFC6455-ja.html<br>
