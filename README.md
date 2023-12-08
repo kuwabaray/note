@@ -4,11 +4,9 @@
   - [TCP](docs/tcpip.md#tcp)
   - [UDP](docs/tcpip.md#udp)
   - [HTTP](docs/tcpip.md#http)
-
-+ [Socket.ioの仕組み](docs/socket.io.md)
-  - [Socket.ioの全体像]()
-  - [HTTP long-polling]()
-  - [WebSocket]()
+  - [Socket.io Library](docs/tcpip.md#websocket)
+    * [HTTP long-polling](docs/tcpip.md#http-long-polling)
+    * [WebSocket](docs/tcpip.md#websocket)
   
 + [Webブラウザのセキュリティ](docs/web-browser-security.md)
   - [HTTPS](docs/web-browser-security.md#https)
