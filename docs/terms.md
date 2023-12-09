@@ -13,8 +13,8 @@
 
 
 ## CodePush
-> CodePushは，Microsoft社が開発している，OTAアップデートをサポートするためのプラットフォーム
-> 開発プラットフォームとしては，CordovaとReact Nativeをサポートしている．
-> ここで，「OTA（Over The Air）アップデート」とは，App Store，Google Play Storeなどの公式ストアを介さず，配信サーバから直接ユーザのアプリをアップデートする技術を指す．
-> CordovaやReact Nativeなどのプラットフォームでは，ガワのHTML/CSS/JavaScriptの部分1について，（大きく機能を変更しない場合に限り，）例外的に公式ストアを介さない形での配信が認められている．
+> CodePushは，Microsoft社が開発している，OTAアップデートをサポートするためのプラットフォーム<br>
+> 開発プラットフォームとしては，CordovaとReact Nativeをサポートしている．<br>
+> ここで，「OTA（Over The Air）アップデート」とは，App Store，Google Play Storeなどの公式ストアを介さず，配信サーバから直接ユーザのアプリをアップデートする技術を指す．<br>
+> CordovaやReact Nativeなどのプラットフォームでは，ガワのHTML/CSS/JavaScriptの部分1について，（大きく機能を変更しない場合に限り，）例外的に公式ストアを介さない形での配信が認められている．<br>
 (https://qiita.com/lethe2211/items/5244a68e9bafb8ff5c22 より引用)
