@@ -177,3 +177,4 @@ CDNは通信時間短縮のため各リージョンに配置されたリバー�
 [3] https://socket.io/docs/v3/how-it-works/<br>
 [4] [Microsoft 「Windows 8 と WebSocket プロトコル」](https://learn.microsoft.com/ja-jp/archive/msdn-magazine/2012/december/windows-8-networking-windows-8-and-the-websocket-protocol)<br>
 [5] https://triple-underscore.github.io/RFC6455-ja.html<br>
+[6] [NGINX リバースプロキシとロードバランサーの違いとは？](https://www.nginx.co.jp/resources/glossary/reverse-proxy-vs-load-balancer/)
