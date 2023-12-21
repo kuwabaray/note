@@ -7,6 +7,11 @@
   - [Socket.io Library](docs/tcpip.md#websocket)
     * [HTTP long-polling](docs/tcpip.md#http-long-polling)
     * [WebSocket](docs/tcpip.md#websocket)
+  - [CDN, LB](https://github.com/kuwabaray/note/blob/main/docs/tcpip.md#cdn-lb)
+    * [CDN, LBなど前段サーバーの役割](https://github.com/kuwabaray/note/blob/main/docs/tcpip.md#cdn%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B9%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E4%B8%BB%E3%81%AA%E5%BD%B9%E5%89%B2)
+    * [CDN (Content Delivery Network)](https://github.com/kuwabaray/note/blob/main/docs/tcpip.md#cdn-content-delivery-network)
+    * [LB (Load Balancer)](https://github.com/kuwabaray/note/blob/main/docs/tcpip.md#lb-load-balancer)
+    * [NGINX](https://github.com/kuwabaray/note/blob/main/docs/tcpip.md#nginx)
   
 + [Webブラウザのセキュリティ](docs/web-browser-security.md)
   - [HTTPS](docs/web-browser-security.md#https)
