@@ -37,5 +37,9 @@
   - [リフレッシュトークン](docs/nativeapp-encryption.md#%E3%83%AA%E3%83%95%E3%83%AC%E3%83%83%E3%82%B7%E3%83%A5%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3)
   - [トークンのローカルでの保管方法](docs/nativeapp-encryption.md#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%A7%E3%81%AE%E4%BF%9D%E7%AE%A1%E6%96%B9%E6%B3%95)
 
-+ [設計]
-  - [エラーハンドリング](docs/system-architecture.md)
++ [設計](docs/system-architecture.md)
+  - [エラーハンドリング](docs/system-architecture.md#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%8F%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3%E3%82%B0)https://github.com/kuwabaray/note/blob/main/docs/system-architecture.md#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%8F%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3%E3%82%B0)
+  - [業務エラーとは](docs/system-architecture.md#%E6%A5%AD%E5%8B%99%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A8%E3%81%AF)
+  - [システムエラーとは](docs/system-architecture.md#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A8%E3%81%AF)
+  - [エラーハンドリング](docs/system-architecture.md#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%8F%E3%83%B3%E3%83%89%E3%83%AA%E3%83%B3%E3%82%B0-1)
+  - [なるべくNullチェックをしないテクニック](docs/system-architecture.md#%E3%81%AA%E3%82%8B%E3%81%B9%E3%81%8Fnull%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%82%92%E3%81%97%E3%81%AA%E3%81%84%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF)
