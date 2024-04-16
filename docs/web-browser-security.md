@@ -48,7 +48,8 @@ Set-Cookie: sessionId=38afes7a8; SameSite=Strict
 
 ### 4. Expires, Max-Age
 
-ExpiredはCookieの有効期限を日付で指定し、Max-Ageは秒数で指定する。両方とも指定された場合はMax-Ageが優先される。
+ExpiredはCookieの有効期限を日付で指定し、Max-Ageは秒数で指定する。両方とも指定された場合はMax-Ageが優先される。<br>
+（＊Cache-Controlのmax-ageとは異なる）
 ```
 Set-Cookie: sessionId=38afes7a8; Expires: Wed, 21 Oct 2015 07:28:00 GMT; Max-Age: 3600
 ```
